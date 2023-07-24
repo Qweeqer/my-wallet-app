@@ -1,0 +1,334 @@
+/* App.css */
+
+.App {
+  text-align: center;
+}
+.App-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background: url("/ethereum.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.App-title {
+  font-size: 4em;
+  text-align: center;
+  padding: 20px 0;
+  color: white;
+  background: linear-gradient(90deg, #00b4db, #0083b0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background-color: #282c34;
+  min-height: 60px;
+  color: white;
+}
+
+.connectButton {
+  margin-right: 5%;
+  transition: all 0.5s ease;
+}
+.connectButton:hover {
+  background-color: #0fbdf7;
+  color: #ffffff;
+  border: 2px solid #0fbdf7;
+}
+.connectWallet {
+  max-width: 50%;
+  max-height: 50px;
+  padding: 10px;
+  background: linear-gradient(
+    114.99deg,
+    #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
+  border: currentColor;
+  border-radius: 10px;
+  box-shadow: 0 17px 10px -10px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 5px 10px;
+  text-decoration: none;
+  transition: all 0.25s linear;
+  margin-right: 2%;
+}
+.walletAddress,
+.walletBalance {
+  margin-right: 20px;
+}
+.wallet-info {
+  width: 70%;
+  height: 450px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: hsla(0, 0%, 100%, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 17px 10px -15px rgba(0, 0, 0, 0.4);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.wallet-info input {
+  width: 85%;
+  margin: 10px;
+  padding: 10px;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.wallet-info button {
+  margin: 10px;
+  padding: 15px;
+  background-color: #61dafb;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* ///Model for install Metamask// */
+.metamask-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  max-width: 500px;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 10px;
+  border: 2px solid #000000;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.modal-close-button:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+.modal-title {
+  margin: 0;
+  margin-top: 1.2em;
+  margin-bottom: 1em;
+
+  text-align: center;
+  font-size: 36px;
+  line-height: 1.36;
+  font-weight: 500;
+  color: #333;
+}
+
+.modal-content {
+  margin-bottom: 2em;
+  text-align: center;
+  font-size: 24px;
+  line-height: 1.36;
+  font-weight: 300;
+  color: #666;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.modal-link {
+  display: inline-block;
+  color: #007bff;
+  text-decoration: none;
+  animation: pulse 0.5s ease-in-out infinite;
+  animation-iteration-count: 5;
+  animation-delay: 5s;
+}
+.modal-link:hover {
+  color: rgb(10, 241, 10);
+}
+
+/* //Transfer window// */
+/* TransferForm.css */
+.transfer-input {
+  font-family: "Helvetica Neue", Helvetica, Arial;
+  font-size: 1.2em;
+  line-height: 1.32;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.error-text {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  line-height: 1.32;
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: red;
+}
+
+.transfer-button {
+  background: linear-gradient(
+    114.99deg,
+    #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
+  border: currentColor;
+  border-radius: 10px;
+  box-shadow: 0 17px 10px -10px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 5px 10px;
+  text-decoration: none;
+  transition: all 0.25s linear;
+}
+
+.transfer-button:hover,
+.connectWallet:hover {
+  background: #5cd3a8;
+  box-shadow: 0 37px 20px -20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  transition: all 0.25s linear;
+}
+
+.transfer-button:disabled {
+  background-color: yellowgreen;
+}
+/* transfer-input-wrapper */
+.transfer-input-wrapper {
+  position: relative;
+  width: 90%;
+}
+
+.transfer-input-wrapper label {
+  position: absolute;
+  left: 40%;
+  top: 30%;
+  transition: all 0.3s ease-in-out;
+  color: grey;
+}
+
+.transfer-input-wrapper label.active {
+  top: -15px;
+  font-size: 1.3em;
+  line-height: 1.36;
+  font-weight: 500;
+  margin-bottom: 5%;
+  color: #000000;
+}
+/* /--Adaptive media rules -- // */
+/* Styles for screens 375px and up */
+@media only screen and (min-width: 375px) {
+  .App-title {
+    font-size: 2em;
+  }
+
+  .connectButton {
+    margin-right: 5%;
+  }
+  .connectWallet {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    font-size: 10px;
+  }
+  .wallet-info {
+    width: 100%;
+  }
+  .wallet-info input {
+    font-size: 1.1em;
+    width: 100%;
+  }
+  .error-text {
+    font-size: 1em;
+  }
+}
+
+/* Styles for screens 768px and up */
+@media only screen and (min-width: 768px) {
+  .App-title {
+    font-size: 3em;
+  }
+  .logo {
+    min-height: 60px;
+    width: 15%;
+    height: 100%;
+  }
+  .connectButton {
+    margin-right: 10%;
+  }
+  .connectWallet {
+    display: flex;
+    flex-direction: row;
+    max-width: 70%;
+    font-size: 1.1em;
+  }
+  .wallet-info {
+    width: 80%;
+  }
+  .wallet-info input {
+    font-size: 1.2em;
+  }
+  /* ... any other styles you want to change... */
+}
+
+/* Styles for screens 1280px and up */
+@media only screen and (min-width: 1280px) {
+  .App-title {
+    font-size: 4em;
+  }
+  .connectButton {
+    margin-right: 15%;
+  }
+  .connectWallet {
+    max-width: 80%;
+  }
+  .wallet-info {
+    width: 70%;
+  }
+  .wallet-info input {
+    font-size: 1.3em;
+  }
+  /* ... any other styles you want to change... */
+}
