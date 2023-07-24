@@ -60,6 +60,10 @@ This application is designed to be responsive and includes the following breakpo
 - 768px for tablets
 - 1280px for desktops
 
+## Live pages:
+
+https://my-wallet-app-dcex.onrender.com/
+
 ## The page template:
 
 ![The page template](./src/images/walletApp.png)
