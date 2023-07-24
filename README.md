@@ -59,8 +59,10 @@ This application is designed to be responsive and includes the following breakpo
 - 375px for mobile devices
 - 768px for tablets
 - 1280px for desktops
-  The page template:
-  ![The page template](./src/images/walletApp.png)
+
+## The page template:
+
+![The page template](./src/images/walletApp.png)
 
 ## Acknowledgements
 
