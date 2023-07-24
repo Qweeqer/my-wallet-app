@@ -40,7 +40,7 @@ Here are the steps to do this:
 
 3. Connect your wallet to this application by clicking on the "Connect Wallet" button on the main page.
 
-![Connect Wallet button](./src/images/connectWallet.png) 
+![Connect Wallet button](./src/images/connectWallet.png)
 
 ## Testing
 
@@ -59,8 +59,9 @@ This application is designed to be responsive and includes the following breakpo
 - 375px for mobile devices
 - 768px for tablets
 - 1280px for desktops
-The page template:
-![The page template](./src/images/walletApp.png)
+  The page template:
+  ![The page template](./src/images/walletApp.png)
+
 ## Acknowledgements
 
 This application would not be possible without the help of the Ethereum community and the contributors to the Metamask project.
@@ -68,4 +69,3 @@ This application would not be possible without the help of the Ethereum communit
 ## License
 
 This project is licensed under the terms of the MIT license.
-
