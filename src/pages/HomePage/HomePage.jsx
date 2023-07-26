@@ -39,16 +39,17 @@ function HomePage() {
   );
 
   useEffect(() => {
-    if (!window.ethereum) {
+    if (typeof window.ethereum === "undefined" || !window.ethereum) {
       setIsModalOpen(true);
     } else if (walletAddress) {
+      setIsModalOpen(false);
       const web3 = new Web3(window.ethereum);
       fetchBalance(web3, walletAddress);
     }
   }, [fetchBalance, walletAddress]);
 
   const connectWallet = async () => {
-    if (!window.ethereum) {
+    if (typeof window.ethereum === "undefined" || !window.ethereum) {
       setIsModalOpen(true);
       return;
     }
