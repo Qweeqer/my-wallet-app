@@ -49,19 +49,15 @@ function HomePage() {
   useEffect(() => {
     const checkWalletConnection = async () => {
       if (window.ethereum) {
-        if (window.ethereum.isMetaMask) {
-          const accounts = await window.ethereum.request({
-            method: "eth_accounts",
-          });
-          if (accounts.length !== 0) {
-            const web3 = new Web3(window.ethereum);
-            const address = accounts[0];
-            dispatch(setIsWalletConnected(true));
-            dispatch(setWalletAddress(address));
-            fetchBalance(web3, address);
-          } else {
-            setIsModalOpen(true);
-          }
+        const accounts = await window.ethereum.request({
+          method: "eth_accounts",
+        });
+        if (accounts.length !== 0) {
+          const web3 = new Web3(window.ethereum);
+          const address = accounts[0];
+          dispatch(setIsWalletConnected(true));
+          dispatch(setWalletAddress(address));
+          fetchBalance(web3, address);
         } else {
           setIsModalOpen(true);
         }
