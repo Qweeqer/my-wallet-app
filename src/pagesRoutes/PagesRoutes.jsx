@@ -12,7 +12,7 @@ const PagesRoutes = () => {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Wallet />} />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </Suspense>
   );
