@@ -78,9 +78,8 @@ function TransferForm({
         onClick={handleClick}
         disabled={!(isValidAddress && isValidAmount) || isLoading}
       >
-        Transfer
+        {isLoading ? <Loader /> : "Transfer"}
       </button>
-      {isLoading && <Loader />}
     </div>
   );
 }
