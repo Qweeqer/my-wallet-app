@@ -2,7 +2,14 @@
 
 # Vite + React + JavaScript App
 
-![Metamask install prompt](./src/images/installMetaMask.png)
+# Preparation Vite:
+
+1. Install Vite: Ensure that Node.js is installed on your machine. Then, install Vite by running the command npm install -g create-vite.
+
+2. Create a project: Use the create-vite my-wallet-app command to create a new Vite project.
+
+3. Navigate to the project folder: Use the command cd my-wallet-app to enter your newly created project directory.
+
 
 This is a simple React JavaScript application developed using the white app approach. The project uses the popular Ethereum wallet, Metamask, for transaction handling and interaction with Ethereum's blockchain. It's designed to be clean, efficient, and easy to understand.
 
@@ -29,6 +36,8 @@ npm run dev
 ```
 
 ## Prerequisites
+
+![Metamask install prompt](./src/images/installMetaMask.png)
 
 Before you begin, ensure you have Metamask installed on your browser. You will also need to create a wallet and connect it to this application.
 
