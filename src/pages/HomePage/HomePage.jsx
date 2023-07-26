@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import Modal from "react-modal";
 import Web3 from "web3";
+import Web3Modal from "web3modal";
 
 import {
   setWalletAddress,
@@ -15,6 +16,13 @@ import ConnectWalletButton from "../../components/ConnectWalletButton/ConnectWal
 import TransferForm from "../../components/TransferForm/TransferForm.jsx";
 
 Modal.setAppElement("#root");
+
+// Create a Web3Modal instance outside the component
+const web3Modal = new Web3Modal({
+  network: "mainnet", // optional
+  cacheProvider: true, // optional
+  providerOptions: {}, // this will be different depending on what wallets you want to support
+});
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -39,25 +47,39 @@ function HomePage() {
   );
 
   useEffect(() => {
-    if (!window.ethereum) {
-      setIsModalOpen(true);
-    } else if (walletAddress) {
-      const web3 = new Web3(window.ethereum);
-      fetchBalance(web3, walletAddress);
-    }
-  }, [fetchBalance, walletAddress]);
+    const checkWalletConnection = async () => {
+      if (window.ethereum) {
+        if (window.ethereum.isMetaMask) {
+          const accounts = await window.ethereum.request({
+            method: "eth_accounts",
+          });
+          if (accounts.length !== 0) {
+            const web3 = new Web3(window.ethereum);
+            const address = accounts[0];
+            dispatch(setIsWalletConnected(true));
+            dispatch(setWalletAddress(address));
+            fetchBalance(web3, address);
+          } else {
+            setIsModalOpen(true);
+          }
+        } else {
+          setIsModalOpen(true);
+        }
+      } else {
+        setIsModalOpen(true);
+      }
+    };
+    checkWalletConnection();
+  }, [fetchBalance, dispatch]);
 
   const connectWallet = async () => {
-    if (!window.ethereum) {
-      setIsModalOpen(true);
-      return;
-    }
     try {
       // Request account access
-      await window.ethereum.request({ method: "eth_requestAccounts" });
-      const web3 = new Web3(window.ethereum);
+      const provider = await web3Modal.connect();
+      const web3 = new Web3(provider);
       const accounts = await web3.eth.getAccounts();
       const address = accounts[0];
+
       if (address) {
         dispatch(setIsWalletConnected(true));
         dispatch(setWalletAddress(address));
@@ -74,7 +96,7 @@ function HomePage() {
       return;
     }
 
-    const web3 = new Web3(window.ethereum);
+    const web3 = new Web3(web3Modal.cachedProvider);
     const accounts = await web3.eth.getAccounts();
     const address = accounts[0];
 

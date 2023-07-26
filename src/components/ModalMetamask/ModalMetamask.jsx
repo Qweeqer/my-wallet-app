@@ -13,7 +13,8 @@ function ModalMetamask({ isModalOpen, setIsModalOpen }) {
     (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)
   ) {
     if (window.ethereum) {
-      modalContent = "MetaMask is installed. Please connect to it.";
+      modalContent =
+        "MetaMask is installed. Please open this app in the MetaMask browser to connect.";
     } else {
       link = /android/i.test(userAgent)
         ? "https://play.google.com/store/apps/details?id=io.metamask"
