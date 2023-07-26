@@ -8,11 +8,11 @@ import {
   setWalletAddress,
   setBalance,
   setIsWalletConnected,
-} from "../../../redux/walletSlice.js";
-import Logo from "../../logo/Logo";
-import ModalMetamask from "../../ModalMetamask/ModalMetamask";
-import ConnectWalletButton from "../../ConnectWalletButton/ConnectWalletButton";
-import TransferForm from "../../TransferForm/TransferForm";
+} from "../../redux/walletSlice.js";
+import Logo from "../../components/logo/Logo.jsx";
+import ModalMetamask from "../../components/ModalMetamask/ModalMetamask.jsx";
+import ConnectWalletButton from "../../components/ConnectWalletButton/ConnectWalletButton.jsx";
+import TransferForm from "../../components/TransferForm/TransferForm.jsx";
 
 Modal.setAppElement("#root");
 
@@ -32,7 +32,8 @@ function HomePage() {
     async (web3, address) => {
       const balanceWei = await web3.eth.getBalance(address);
       const balanceEth = web3.utils.fromWei(balanceWei, "ether");
-      dispatch(setBalance(parseFloat(balanceEth).toFixed(3).toString()));
+      const exactBalance = Math.floor(balanceEth * 1000) / 1000;
+      dispatch(setBalance(exactBalance.toFixed(3)));
     },
     [dispatch]
   );
@@ -82,6 +83,8 @@ function HomePage() {
         from: address,
         to: transferAddress,
         value: web3.utils.toWei(transferAmount, "ether"),
+        gas: 21000,
+        gasPrice: web3.utils.toWei("50", "gwei"),
       });
 
       Notify.success("Transfer successful");
@@ -97,10 +100,7 @@ function HomePage() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* Логотип */}
         <Logo />
-
-        {/* Кнопка "Connect wallet" */}
         <ConnectWalletButton
           isWalletConnected={isWalletConnected}
           walletAddress={walletAddress}
@@ -110,7 +110,6 @@ function HomePage() {
       </header>
       <main className="App-main">
         <h1 className="App-title">My Wallet App</h1>
-        {/* Блок з елементами Форми трансферу */}
         {isWalletConnected && (
           <TransferForm
             transferAddress={transferAddress}
