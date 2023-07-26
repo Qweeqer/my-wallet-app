@@ -74,6 +74,18 @@
 .walletBalance {
   margin-right: 20px;
 }
+.connectWallet .walletAddress {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.connectWallet .walletAddress:hover {
+  overflow: visible;
+  width: auto;
+}
+
 .wallet-info {
   width: 70%;
   height: 450px;
@@ -220,6 +232,8 @@
   padding: 5px 10px;
   text-decoration: none;
   transition: all 0.25s linear;
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .transfer-button:hover,
