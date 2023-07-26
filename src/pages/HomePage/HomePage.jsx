@@ -10,6 +10,7 @@ import {
   setBalance,
   setIsWalletConnected,
 } from "../../redux/walletSlice.js";
+
 import Logo from "../../components/logo/Logo.jsx";
 import ModalMetamask from "../../components/ModalMetamask/ModalMetamask.jsx";
 import ConnectWalletButton from "../../components/ConnectWalletButton/ConnectWalletButton.jsx";
@@ -17,11 +18,10 @@ import TransferForm from "../../components/TransferForm/TransferForm.jsx";
 
 Modal.setAppElement("#root");
 
-// Create a Web3Modal instance outside the component
 const web3Modal = new Web3Modal({
-  network: "mainnet", // optional
-  cacheProvider: true, // optional
-  providerOptions: {}, // this will be different depending on what wallets you want to support
+  network: "mainnet", 
+  cacheProvider: true, 
+  providerOptions: {}, 
 });
 
 function HomePage() {
@@ -70,7 +70,6 @@ function HomePage() {
 
   const connectWallet = async () => {
     try {
-      // Request account access
       const provider = await web3Modal.connect();
       const web3 = new Web3(provider);
       const accounts = await web3.eth.getAccounts();
